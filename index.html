@@ -4,11 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           darkMode: 'class',
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
           extend: {
             colors: {
               bgColor: '#1e1e25',
@@ -22,12 +31,168 @@
         },
       };
     </script>
+    <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
     <title>Password Generator</title>
   </head>
   <body
-    class="bg-white dark:bg-bgColor flex h-screen w-screen justify-center items-center text-white"
+    class="bg-white dark:bg-bgColor flex h-screen w-screen justify-center items-center text-white font-sans"
   >
-    <main class="container max-w-sm mx-5 bg-fgColor"></main>
+    <main class="container flex flex-col max-w-sm mx-5">
+      <header id="title" class="h3 text-sm text-center my-5 dark:text-gray-200">
+        <h3>Password Generator</h3>
+      </header>
+      <section
+        class="flex justify-between items-center dark:bg-fgColor p-3 my-2"
+      >
+        <!-- Password -->
+        <h1 id="password" class="text-lg ml-1">{PASSWORD}</h1>
+        <div class="cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="text-details opacity-60 hover:opacity-100"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"
+            ></path>
+          </svg>
+        </div>
+      </section>
+      <!-- 2nd area -->
+      <section class="flex flex-col p-3 my-2 dark:bg-fgColor">
+        <!-- Length -->
+        <section>
+          <div class="flex justify-between ml-1 text-sm">
+            <p>Character Length</p>
+            <p id="pass-size" class="text-details">{size}</p>
+          </div>
+          <div class="w-full">
+            <input
+              type="range"
+              id="password-range"
+              min="8"
+              max="20"
+              class="w-full my-2 slider"
+            />
+          </div>
+        </section>
+        <!-- Includes -->
+        <section class="space-y-2 my-2">
+          <div class="space-x-3">
+            <input type="checkbox" name="upper-check" id="upper-check" /><label
+              for="upper-check"
+              class="text-sm"
+              >Include Lowercase Letters</label
+            >
+          </div>
+          <div class="space-x-3">
+            <input type="checkbox" name="upper-check" id="upper-check" /><label
+              for="upper-check"
+              class="text-sm"
+              >Include Uppercase Letters</label
+            >
+          </div>
+          <div class="space-x-3">
+            <input type="checkbox" name="upper-check" id="upper-check" /><label
+              for="upper-check"
+              class="text-sm"
+              >Include Numbers</label
+            >
+          </div>
+          <div class="space-x-3">
+            <input type="checkbox" name="upper-check" id="upper-check" /><label
+              for="upper-check"
+              class="text-sm"
+              >Include Symbols</label
+            >
+          </div>
+        </section>
+        <!-- Str -->
+        <section class="flex justify-between bg-bgColor my-2 p-4 text-sm">
+          <p class="text-gray-400">STRENGTH</p>
+          <div class="flex space-x-2 items-center">
+            <p id="password-str">{STR}</p>
+            <div id="d1" class="border border-white w-2 h-5"></div>
+            <div id="d2" class="border border-white w-2 h-5"></div>
+            <div id="d3" class="border border-white w-2 h-5"></div>
+            <div id="d4" class="border border-white w-2 h-5"></div>
+            <div id="d5" class="border border-white w-2 h-5"></div>
+          </div>
+        </section>
+        <!-- Button -->
+        <button
+          class="flex justify-center items-center w-full my-3 p-3 bg-details border border-details text-bgColor hover:bg-bgColor hover:text-details hover:border-details duration-200"
+        >
+          Generate
+        </button>
+      </section>
+      <!-- Footer -->
+      <footer class="flex justify-center items-center text-xs text-center mt-8">
+        <div>
+          <a href="https://carlosarraes.github.io/" target="_blank">
+            <button
+              id="devfolio"
+              class="space-x-1 border p-2 rounded-l-md opacity-60 hover:opacity-100 duration-200"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                width="16"
+                height="16"
+                fill="currentColor"
+                style="
+                  display: inline-block;
+                  user-select: none;
+                  vertical-align: text-bottom;
+                  overflow: visible;
+                "
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10.604 1h4.146a.25.25 0 01.25.25v4.146a.25.25 0 01-.427.177L13.03 4.03 9.28 7.78a.75.75 0 01-1.06-1.06l3.75-3.75-1.543-1.543A.25.25 0 0110.604 1zM3.75 2A1.75 1.75 0 002 3.75v8.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 12.25v-3.5a.75.75 0 00-1.5 0v3.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-8.5a.25.25 0 01.25-.25h3.5a.75.75 0 000-1.5h-3.5z"
+                ></path></svg
+              ><span>carlos arraes</span>
+            </button>
+          </a>
+        </div>
+        <div>
+          <a href="https://github.com/carlosarraes/genpass" target="_blank">
+            <button
+              class="space-x-1 border p-2 rounded-r-md opacity-60 hover:opacity-100 duration-200"
+            >
+              <svg
+                aria-hidden="true"
+                role="img"
+                class="octicon octicon-code"
+                viewBox="0 0 16 16"
+                width="16"
+                height="16"
+                fill="currentColor"
+                style="
+                  display: inline-block;
+                  user-select: none;
+                  vertical-align: text-bottom;
+                  overflow: visible;
+                "
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"
+                ></path></svg
+              ><span class="">Código</span>
+            </button>
+          </a>
+        </div>
+      </footer>
+    </main>
   </body>
 </html>
