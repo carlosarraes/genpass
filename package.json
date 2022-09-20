@@ -1,0 +1,23 @@
+{
+  "name": "genpass",
+  "version": "1.0.0",
+  "description": "<div align=\"center\"><img src=\"images/first.png\"><img src=\"images/mobile1.png\"></div>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosarraes/genpass.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlosarraes/genpass/issues"
+  },
+  "homepage": "https://github.com/carlosarraes/genpass#readme",
+  "dependencies": {
+    "typescript": "^4.8.3"
+  }
+}
