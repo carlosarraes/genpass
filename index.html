@@ -33,14 +33,14 @@
     <script src="app.js" defer></script>
     <title>Password Generator</title>
   </head>
-  <body class="bg-white dark:bg-bgColor flex h-screen w-screen justify-center items-center text-white font-sans">
+  <body class="flex h-screen w-screen justify-center items-center text-white font-sans bg-bgColor">
     <main class="container flex flex-col max-w-sm mx-5">
-      <header id="title" class="relative h3 text-sm text-center my-5 dark:text-gray-200">
+      <header id="title" class="relative h3 text-sm text-center my-5 text-gray-200">
         <h3>Password Generator</h3>
         <!-- Modal -->
         <h5 id="modal" class="absolute right-0 hidden text-greenPass"></h5>
       </header>
-      <section class="flex justify-between items-center dark:bg-fgColor p-3 my-2">
+      <section class="flex justify-between items-center bg-fgColor p-3 my-2">
         <!-- Password -->
         <h1 id="password" class="text-lg h-8 ml-1"></h1>
         <div id="click-copy" class="cursor-pointer">
@@ -64,7 +64,7 @@
         </div>
       </section>
       <!-- 2nd area -->
-      <section class="flex flex-col p-3 my-2 dark:bg-fgColor">
+      <section class="flex flex-col p-3 my-2 bg-fgColor">
         <!-- Length -->
         <section>
           <div class="flex justify-between ml-1 text-sm">
@@ -100,13 +100,15 @@
         </section>
         <!-- Str -->
         <section class="flex justify-between bg-bgColor my-2 p-4 text-sm">
-          <p class="text-gray-400 uppercase">Força</p>
-          <div class="flex space-x-2 items-center">
+          <p class="text-gray-400 font-bold tracking-widest uppercase">Força</p>
+          <div class="flex space-x-4 items-center">
             <p id="pass-str">{STR}</p>
-            <div class="display border border-white w-2 h-5"></div>
-            <div class="display border border-white w-2 h-5"></div>
-            <div class="display border border-white w-2 h-5"></div>
-            <div class="display border border-white w-2 h-5"></div>
+            <div class="flex space-x-2">
+              <div class="display border border-white w-2 h-5"></div>
+              <div class="display border border-white w-2 h-5"></div>
+              <div class="display border border-white w-2 h-5"></div>
+              <div class="display border border-white w-2 h-5"></div>
+            </div>
           </div>
         </section>
         <!-- Button -->

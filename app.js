@@ -25,17 +25,17 @@ passwordStrDisplay.innerText = passwordStr;
 passwordSize.innerText = passwordRange.value;
 function handleDisplay() {
     for (let i = 0; i < 4; i += 1) {
-        display[i].classList.remove('bg-red-600', 'border-red-600', 'bg-yellow-400', 'border-yellow-400', 'bg-green-400', 'border-green-400');
+        display[i].classList.remove('bg-redPass', 'border-redPass', 'bg-yellowPass', 'border-yellowPass', 'bg-greenPass', 'border-greenPass');
     }
     for (let i = 0; i < passwordStr; i += 1) {
         if (passwordStr === 1) {
-            display[i].classList.add('bg-red-600', 'border-red-600');
+            display[i].classList.add('bg-redPass', 'border-redPass');
         }
         else if (passwordStr < 4) {
-            display[i].classList.add('bg-yellow-400', 'border-yellow-400');
+            display[i].classList.add('bg-yellowPass', 'border-yellowPass');
         }
         else {
-            display[i].classList.add('bg-green-400', 'border-green-400');
+            display[i].classList.add('bg-greenPass', 'border-greenPass');
         }
     }
 }
@@ -80,13 +80,19 @@ function handleClick() {
     password.innerText = generatePass(finalPasswordString);
 }
 function showModal(str) {
+    if (str === 'Nada para copiar') {
+        modal.classList.add('text-redPass');
+    }
     modal.innerText = str;
     modal.classList.toggle('hidden');
     setTimeout(() => {
         modal.classList.toggle('hidden');
+        modal.classList.remove('text-redPass');
     }, 3000);
 }
 function handleCopy() {
+    if (!password.innerText)
+        return showModal('Nada para copiar');
     let copyText = password.innerText;
     navigator.clipboard.writeText(copyText).then(() => {
         showModal('Copiado!');
