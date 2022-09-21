@@ -4,11 +4,12 @@
 
 ## CheckList
 
-- [ ] Visual do app.
-- [ ] Gera password baseado nos inputs.
-- [ ] Copia password com clique.
-- [ ] Fica visivel a forca da senha.
-- [ ] Responsivo
+- [x] Visual do app.
+- [x] Gera password baseado nos inputs.
+- [x] Copia password com clique.
+- [x] Fica visivel a forca da senha.
+- [x] Responsivo
+- [ ] Ultimos toques
 - [ ] Dark/Light Mode
 
 #### Cores:

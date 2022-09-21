@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -35,19 +33,17 @@
     <script src="app.js" defer></script>
     <title>Password Generator</title>
   </head>
-  <body
-    class="bg-white dark:bg-bgColor flex h-screen w-screen justify-center items-center text-white font-sans"
-  >
+  <body class="bg-white dark:bg-bgColor flex h-screen w-screen justify-center items-center text-white font-sans">
     <main class="container flex flex-col max-w-sm mx-5">
-      <header id="title" class="h3 text-sm text-center my-5 dark:text-gray-200">
+      <header id="title" class="relative h3 text-sm text-center my-5 dark:text-gray-200">
         <h3>Password Generator</h3>
+        <!-- Modal -->
+        <h5 id="modal" class="absolute right-0 hidden text-greenPass"></h5>
       </header>
-      <section
-        class="flex justify-between items-center dark:bg-fgColor p-3 my-2"
-      >
+      <section class="flex justify-between items-center dark:bg-fgColor p-3 my-2">
         <!-- Password -->
-        <h1 id="password" class="text-lg ml-1">{PASSWORD}</h1>
-        <div class="cursor-pointer">
+        <h1 id="password" class="text-lg h-8 ml-1"></h1>
+        <div id="click-copy" class="cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -72,89 +68,67 @@
         <!-- Length -->
         <section>
           <div class="flex justify-between ml-1 text-sm">
-            <p>Character Length</p>
+            <p>Tamanho da senha:</p>
             <p id="pass-size" class="text-details">{size}</p>
           </div>
           <div class="w-full">
-            <input
-              type="range"
-              id="password-range"
-              min="8"
-              max="20"
-              class="w-full my-2 slider"
-            />
+            <input type="range" id="pass-range" min="10" max="20" value="10" class="w-full my-2 slider" />
           </div>
         </section>
         <!-- Includes -->
         <section class="space-y-2 my-2">
           <div class="space-x-3">
-            <input type="checkbox" name="upper-check" id="upper-check" /><label
-              for="upper-check"
-              class="text-sm"
-              >Include Lowercase Letters</label
+            <input type="checkbox" name="lower-check" id="lower-check" /><label for="lower-check" class="text-sm"
+              >Incluir letras minúsculas</label
             >
           </div>
           <div class="space-x-3">
-            <input type="checkbox" name="upper-check" id="upper-check" /><label
-              for="upper-check"
-              class="text-sm"
-              >Include Uppercase Letters</label
+            <input type="checkbox" name="upper-check" id="upper-check" /><label for="upper-check" class="text-sm"
+              >Incluir letras maiúsculas</label
             >
           </div>
           <div class="space-x-3">
-            <input type="checkbox" name="upper-check" id="upper-check" /><label
-              for="upper-check"
-              class="text-sm"
-              >Include Numbers</label
+            <input type="checkbox" name="number-check" id="number-check" /><label for="number-check" class="text-sm"
+              >Incluir números</label
             >
           </div>
           <div class="space-x-3">
-            <input type="checkbox" name="upper-check" id="upper-check" /><label
-              for="upper-check"
-              class="text-sm"
-              >Include Symbols</label
+            <input type="checkbox" name="symbol-check" id="symbol-check" /><label for="symbol-check" class="text-sm"
+              >Incluir símbolos</label
             >
           </div>
         </section>
         <!-- Str -->
         <section class="flex justify-between bg-bgColor my-2 p-4 text-sm">
-          <p class="text-gray-400">STRENGTH</p>
+          <p class="text-gray-400 uppercase">Força</p>
           <div class="flex space-x-2 items-center">
-            <p id="password-str">{STR}</p>
-            <div id="d1" class="border border-white w-2 h-5"></div>
-            <div id="d2" class="border border-white w-2 h-5"></div>
-            <div id="d3" class="border border-white w-2 h-5"></div>
-            <div id="d4" class="border border-white w-2 h-5"></div>
-            <div id="d5" class="border border-white w-2 h-5"></div>
+            <p id="pass-str">{STR}</p>
+            <div class="display border border-white w-2 h-5"></div>
+            <div class="display border border-white w-2 h-5"></div>
+            <div class="display border border-white w-2 h-5"></div>
+            <div class="display border border-white w-2 h-5"></div>
           </div>
         </section>
         <!-- Button -->
         <button
           class="flex justify-center items-center w-full my-3 p-3 bg-details border border-details text-bgColor hover:bg-bgColor hover:text-details hover:border-details duration-200"
+          id="generate-btn"
         >
-          Generate
+          Gerar Senha
         </button>
       </section>
       <!-- Footer -->
       <footer class="flex justify-center items-center text-xs text-center mt-8">
         <div>
           <a href="https://carlosarraes.github.io/" target="_blank">
-            <button
-              id="devfolio"
-              class="space-x-1 border p-2 rounded-l-md opacity-60 hover:opacity-100 duration-200"
-            >
+            <button id="devfolio" class="space-x-1 border p-2 rounded-l-md opacity-60 hover:opacity-100 duration-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
                 width="16"
                 height="16"
                 fill="currentColor"
-                style="
-                  display: inline-block;
-                  user-select: none;
-                  vertical-align: text-bottom;
-                  overflow: visible;
-                "
+                style="display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible"
               >
                 <path
                   fill-rule="evenodd"
@@ -166,9 +140,7 @@
         </div>
         <div>
           <a href="https://github.com/carlosarraes/genpass" target="_blank">
-            <button
-              class="space-x-1 border p-2 rounded-r-md opacity-60 hover:opacity-100 duration-200"
-            >
+            <button class="space-x-1 border p-2 rounded-r-md opacity-60 hover:opacity-100 duration-200">
               <svg
                 aria-hidden="true"
                 role="img"
@@ -177,12 +149,7 @@
                 width="16"
                 height="16"
                 fill="currentColor"
-                style="
-                  display: inline-block;
-                  user-select: none;
-                  vertical-align: text-bottom;
-                  overflow: visible;
-                "
+                style="display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible"
               >
                 <path
                   fill-rule="evenodd"
