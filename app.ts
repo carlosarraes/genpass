@@ -62,7 +62,7 @@ function handleCheck(e: any) {
 }
 
 function generatePass(str: string): string {
-  if (!str) return 'baloney1000000000000'.slice(0, +passwordRange.value);
+  if (!str) return 'baloney1stupidnumber'.slice(0, +passwordRange.value);
   let generatedPass: string = '';
   for (let i = 0; i < passRange; i += 1) {
     generatedPass += str[Math.floor(Math.random() * str.length)];
