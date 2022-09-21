@@ -55,7 +55,7 @@ function handleCheck(e) {
 }
 function generatePass(str) {
     if (!str)
-        return 'baloney1';
+        return 'baloney1000000000000'.slice(0, +passwordRange.value);
     let generatedPass = '';
     for (let i = 0; i < passRange; i += 1) {
         generatedPass += str[Math.floor(Math.random() * str.length)];
