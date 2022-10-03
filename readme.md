@@ -9,8 +9,6 @@
 - [x] Copia password com clique.
 - [x] Fica visivel a forca da senha.
 - [x] Responsivo
-- [ ] Ultimos toques
-- [ ] Dark/Light Mode
 
 #### Cores:
 
